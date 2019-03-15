@@ -1,5 +1,5 @@
 package document;
-
+import java.util.Arrays;
 /** 
  * A class that represents a text document
  * @author UC San Diego Intermediate Programming MOOC team
@@ -42,6 +42,15 @@ public abstract class Document {
 		return tokens;
 	}
 	
+	
+	protected boolean include(char[] arr, char letter) {
+		for(int i = 0; i < arr.length; i++) {
+			if(arr[i] == letter) {
+				return true;
+			}
+		}
+		return false;
+	}
 	/** This is a helper function that returns the number of syllables
 	 * in a word.  You should write this and use it in your 
 	 * BasicDocument class.
@@ -64,10 +73,43 @@ public abstract class Document {
 	 */
 	protected int countSyllables(String word)
 	{
-		// TODO: Implement this method so that you can call it from the 
-	    // getNumSyllables method in BasicDocument (module 2) and 
-	    // EfficientDocument (module 3).
-	    return 0;
+		String word1 = word.toLowerCase();
+		char[] syllables = {'a', 'e', 'i', 'o', 'u', 'y'}; 
+		
+		if(word1.length() == 1) {
+			if(include(syllables, word1.charAt(0))) {
+				return 1;
+			}
+		}
+		
+		int counter = 0;
+		for(int i = 0; i < word1.length()-1; i++) {
+			if(include(syllables, word1.charAt(i))) {
+				if(!include(syllables, word1.charAt(i+1))) {
+					counter++;
+				}
+			}
+		}
+		
+		if(include(syllables, word1.charAt(word1.length()-1))) {
+			counter++;
+		}
+	
+		if(word1.charAt(word1.length()-1) == 'e') {
+			if(!include(syllables, word1.charAt(word1.length()-2))){
+				counter--;
+			}
+		}
+		
+		if(word1.charAt(word1.length()-1) == 'e') {
+			for(int i = 0; i < word1.length()-1; i++) {
+				if(include(syllables, word.charAt(i))) {
+					return counter;
+				}
+			}
+			counter++;
+		}
+	    return counter;
 	}
 	
 	/** A method for testing
@@ -130,11 +172,8 @@ public abstract class Document {
 	/** return the Flesch readability score of this document */
 	public double getFleschScore()
 	{
-	    // TODO: You will play with this method in week 1, and 
-		// then implement it in week 2
-	    return text.length();
+	    double score = 206.835 - ((1.015*getNumWords())/getNumSentences()) - ((84.6*getNumSyllables())/getNumWords());
+	    return score;
 	}
-	
-	
 	
 }
