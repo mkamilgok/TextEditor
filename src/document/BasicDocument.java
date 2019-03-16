@@ -80,7 +80,6 @@ public class BasicDocument extends Document
 		// the helper function countSyllables in Document.java using a loop, 
 		// and then call it here on each word.
 		int totalSyl = 0;
-		String text = getText();
 		List<String> words = getTokens("[a-zA-Z]+");
 		
 		for (String item : words) {

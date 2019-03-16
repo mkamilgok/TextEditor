@@ -42,7 +42,31 @@ public class DocumentBenchmarking {
 		{
 			// numToCheck holds the number of characters that you should read from the 
 			// file to create both a BasicDocument and an EfficientDocument.  
+			System.out.print(numToCheck + "\t");
+			String text = getStringFromFile(textfile, numToCheck);
+			long startTime = System.nanoTime();
 			
+			for(int i = 0; i < trials; i++) {
+				BasicDocument bdoc = new BasicDocument(text);
+				bdoc.getFleschScore();
+			}
+			
+			long endTime = System.nanoTime();
+			
+			double duration = (double)(endTime-startTime) / 1000000000l; 
+			System.out.print(duration + "\t");
+			
+			startTime = System.nanoTime();
+			
+			for(int i = 0; i < trials; i++) {
+				EfficientDocument bdoc = new EfficientDocument(text);
+				bdoc.getFleschScore();
+			}
+			
+			endTime = System.nanoTime();
+
+			duration = (double)(endTime-startTime) / 1000000000l; 
+			System.out.println(duration);
 			/* Each time through this loop you should:
 			 * 1. Print out numToCheck followed by a tab (\t) (NOT a newline)
 			 * 2. Read numToCheck characters from the file into a String
