@@ -30,7 +30,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		if(element == null) {
 			throw new NullPointerException("Null elements cannot be added.");
 		}
-		LLNode node = new LLNode(element);
+		LLNode<E> node = new LLNode<E>(element);
 		if(head == null) {
 			head = node;
 			tail = node;

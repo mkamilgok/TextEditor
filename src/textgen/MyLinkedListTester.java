@@ -123,8 +123,22 @@ public class MyLinkedListTester {
 	@Test
 	public void testAddEnd()
 	{
-        // TODO: implement this test
+		Integer num = 5;
+		try {	
+			emptyList.add(num);
+		}
+		catch (IndexOutOfBoundsException e) {
+			
+		}
+		try {
+			longerList.add(num);
+		}
+		catch (IndexOutOfBoundsException e) {
+			
+		}
 		
+		assertEquals("Check end", (Integer)5, emptyList.get(emptyList.size - 1));
+		assertEquals("Check end", (Integer)5, longerList.get(longerList.size - 1));
 	}
 
 	
@@ -132,7 +146,10 @@ public class MyLinkedListTester {
 	@Test
 	public void testSize()
 	{
-		// TODO: implement this test
+		assertEquals("Check size", 0, emptyList.size);
+		assertEquals("Check size", 2, shortList.size);
+		assertEquals("Check size", 10, longerList.size);
+		assertEquals("Check size", 3, list1.size);
 	}
 
 	
