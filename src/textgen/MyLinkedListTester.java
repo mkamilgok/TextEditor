@@ -154,7 +154,7 @@ public class MyLinkedListTester {
 		num = 5;
 		emptyList.add(num);
 		assertEquals("Check end", (Integer)5, emptyList.get(emptyList.size - 1));
-		
+		 
 		longerList.add(num);
 		assertEquals("Check end", (Integer)5, longerList.get(longerList.size - 1));
 	}
