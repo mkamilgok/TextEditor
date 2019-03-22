@@ -276,7 +276,7 @@ public class MainApp extends Application {
     }
     
     
-    // MAIN
+    // MAIN method
 	public static void main(String[] args) {
 		launch(args);
 	}
