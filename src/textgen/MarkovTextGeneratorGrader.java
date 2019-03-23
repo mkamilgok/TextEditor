@@ -86,7 +86,6 @@ public class MarkovTextGeneratorGrader {
             feedback += "Text generated: " + s + ". ";
 
             feedback += "\nTests complete. Make sure everything looks right.";
-            System.out.println(feedback);
             PrintWriter f = new PrintWriter("grader_output/module3.part2.out");
             f.println(feedback);
             f.close();
