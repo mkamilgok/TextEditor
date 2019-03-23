@@ -22,7 +22,7 @@ public class MarkovTextGeneratorGrader {
             } catch (Exception e) {
                 feedback += "Error thrown. ";
             }
-
+            
             gen.train("");
             feedback += "\n** Test 2: Generating text after training on an empty file...";
             try {
@@ -31,7 +31,7 @@ public class MarkovTextGeneratorGrader {
             } catch (Exception e) {
                 feedback += "Error thrown. ";
             }
-
+            
             String input = "I love cats. I hate dogs. I I I I I I I I I I I I I I I I love cats. I I I I I I I I I I I I I I I I hate dogs. I I I I I I I I I like books. I love love. I am a text generator. I love cats. I love cats. I love cats. I love love love socks.";
             gen.retrain(input);
             String res = gen.generateText(LENGTH);
@@ -43,7 +43,7 @@ public class MarkovTextGeneratorGrader {
             feedback += "Your generator produced " + words.length + " words. ";
 
             HashMap<String, Integer> wordCounts = new HashMap<String, Integer>();
-
+            
             for (String w : words) {
                 if (wordCounts.containsKey(w)) {
                     wordCounts.put(w, wordCounts.get(w) + 1);
@@ -86,7 +86,7 @@ public class MarkovTextGeneratorGrader {
             feedback += "Text generated: " + s + ". ";
 
             feedback += "\nTests complete. Make sure everything looks right.";
-
+            System.out.println(feedback);
             PrintWriter f = new PrintWriter("grader_output/module3.part2.out");
             f.println(feedback);
             f.close();
