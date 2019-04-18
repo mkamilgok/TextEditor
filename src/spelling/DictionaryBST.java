@@ -21,22 +21,22 @@ public class DictionaryBST implements Dictionary
      * @return true if the word was added to the dictionary 
      * (it wasn't already there). */
     public boolean addWord(String word) {
-    	// TODO: Implement this method
-        return false;
+    	word = word.toLowerCase();
+    	boolean b = dict.add(word);
+        return b;
     }
 
 
     /** Return the number of words in the dictionary */
     public int size()
     {
-    	dict.size();
-        return 0;
+    	return dict.size();
     }
 
     /** Is this a word according to this dictionary? */
     public boolean isWord(String s) {
-    	//TODO: Implement this method
-        return false;
+    	boolean b = dict.contains(s);
+        return b;
     }
 
 }
