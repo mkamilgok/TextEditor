@@ -81,6 +81,10 @@ class TrieNode {
 	{
 		return children.keySet();
 	}
+	
+	public int getChildNum() {
+		return children.size();
+	}
 
 }
 

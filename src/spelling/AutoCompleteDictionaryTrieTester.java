@@ -23,6 +23,7 @@ public class AutoCompleteDictionaryTrieTester {
 	AutoCompleteDictionaryTrie smallDict;
 	AutoCompleteDictionaryTrie largeDict;
 	
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -46,6 +47,38 @@ public class AutoCompleteDictionaryTrieTester {
 		DictionaryLoader.loadDictionary(largeDict, dictFile);
 	}
 
+	@Test
+	public void testPredictCompletions()
+	{
+		List<String> completions;
+		completions = smallDict.predictCompletions("", 0);
+		assertEquals(0, completions.size());
+		
+		completions = smallDict.predictCompletions("",  4);
+		assertEquals(4, completions.size());
+		assertTrue(completions.contains("a"));
+		assertTrue(completions.contains("he"));
+		boolean twoOfThree = completions.contains("hey") && completions.contains("hot") ||
+				             completions.contains("hey") && completions.contains("hem") ||
+				             completions.contains("hot") && completions.contains("hem");
+		assertTrue(twoOfThree);
+		
+		completions = smallDict.predictCompletions("he", 2);
+		boolean allIn = completions.contains("he") && 
+				(completions.contains("hem") || completions.contains("hey"));
+		assertEquals(2, completions.size());
+		assertTrue(allIn);
+		
+		completions = smallDict.predictCompletions("hel", 10);
+		assertEquals(2, completions.size());
+		allIn = completions.contains("hello") && completions.contains("help");
+		assertTrue(allIn);
+	
+		completions = smallDict.predictCompletions("x", 5);
+		assertEquals(0, completions.size());
+		
+	}
+	
 	
 	/** Test if the size method is working correctly.
 	 */
@@ -129,36 +162,7 @@ public class AutoCompleteDictionaryTrieTester {
 		
 	}
 	
-	@Test
-	public void testPredictCompletions()
-	{
-		List<String> completions;
-		completions = smallDict.predictCompletions("", 0);
-		assertEquals(0, completions.size());
-		
-		completions = smallDict.predictCompletions("",  4);
-		assertEquals(4, completions.size());
-		assertTrue(completions.contains("a"));
-		assertTrue(completions.contains("he"));
-		boolean twoOfThree = completions.contains("hey") && completions.contains("hot") ||
-				             completions.contains("hey") && completions.contains("hem") ||
-				             completions.contains("hot") && completions.contains("hem");
-		assertTrue(twoOfThree);
-		
-		completions = smallDict.predictCompletions("he", 2);
-		boolean allIn = completions.contains("he") && 
-				(completions.contains("hem") || completions.contains("hey"));
-		assertEquals(2, completions.size());
-		assertTrue(allIn);
-		
-		completions = smallDict.predictCompletions("hel", 10);
-		assertEquals(2, completions.size());
-		allIn = completions.contains("hello") && completions.contains("help");
-		assertTrue(allIn);
 	
-		completions = smallDict.predictCompletions("x", 5);
-		assertEquals(0, completions.size());
-	}
 	
 	
 	
