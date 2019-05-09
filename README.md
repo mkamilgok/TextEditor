@@ -4,7 +4,7 @@ TextProApp is the course project for **Data Structures and Performance
 by University of California San Diego(Coursera)**. The sketch code is given by Coursera. TextProApp is an advanced text editor which has the following features that are written and enabled by `@mkamilgok` : 
 * **Flesch Index Score Calculator** which shows the readability of the text. Higher the score is, easier the text is easier to read.
 * **Markov Text Generator** which generates a text with a specified number of words by using the given text.
-* **Spelling** Suggestions which highlights the misspelled words.
+* **Spelling Suggestions** which highlights the misspelled words.
 * **AutoComplete** feature which can predict and complete the word.
 ## Requirements
 
