@@ -24,7 +24,7 @@ Required programs are :
 	  File -> Import -> Select "File System" -> Next -> Browse and set 
 	  root directory to folder contents of zip were extracted to -> Finish
 
-Feel free to use another IDE or manually compile and run your programs.
+Feel free to use another IDE or manually compile and run the app.
 
 
 ## Contributing
